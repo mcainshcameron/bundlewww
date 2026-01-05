@@ -94,6 +94,28 @@ Generate the complete chapter content now. Return ONLY the JSON."""
             lines.append(f"  Expected content: {', '.join(section.expected_content_types)}")
         return "\n".join(lines)
 
+    def _is_valid_block(self, block: ContentBlock) -> bool:
+        """Validate that a content block has actual content"""
+        if isinstance(block, ProseSection):
+            # Prose must have at least one non-empty paragraph
+            return len(block.paragraphs) > 0 and any(p.strip() for p in block.paragraphs)
+        elif isinstance(block, Timeline):
+            # Timeline must have at least one event
+            return len(block.events) > 0
+        elif isinstance(block, Table):
+            # Table must have rows
+            return len(block.rows) > 0
+        elif isinstance(block, Callout):
+            # Callout must have content
+            return bool(block.content.strip())
+        elif isinstance(block, KeyStat):
+            # KeyStat must have value and label
+            return bool(block.value.strip()) and bool(block.label.strip())
+        elif isinstance(block, CodeBlock):
+            # CodeBlock must have code
+            return bool(block.code.strip())
+        return True
+
     def _parse_content_block(self, block_data: dict) -> ContentBlock:
         """Parse a content block from JSON data"""
         block_type = block_data.get("type")
@@ -169,13 +191,17 @@ Generate the complete chapter content now. Return ONLY the JSON."""
                 blocks = []
                 for block_data in section_data.get("blocks", []):
                     block = self._parse_content_block(block_data)
-                    blocks.append(block)
+                    # Only include blocks that have actual content
+                    if self._is_valid_block(block):
+                        blocks.append(block)
 
-                section_schema = SectionSchema(
-                    section_id=section_data.get("section_id", ""),
-                    blocks=blocks,
-                )
-                sections.append(section_schema)
+                # Only include sections that have at least one valid block
+                if blocks:
+                    section_schema = SectionSchema(
+                        section_id=section_data.get("section_id", ""),
+                        blocks=blocks,
+                    )
+                    sections.append(section_schema)
 
             chapter_schema = ChapterSchema(
                 chapter_id=chapter.id,
