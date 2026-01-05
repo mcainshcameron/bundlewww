@@ -101,19 +101,19 @@ That's it! The startup script handles all dependencies automatically.
 
 BundleWWW supports the following models through OpenRouter:
 
-| Model | Input Cost | Output Cost | Speed |
-|-------|-----------|-------------|--------|
-| **xAI: Grok Code Fast** | $0.20/1M | $1.50/1M | ⚡ Fast |
-| **Google: Gemini 2.5 Flash** | $0.30/1M | $2.50/1M | ⚡ Fast |
-| **Anthropic: Claude Sonnet 4.5** | $3.00/1M | $15.00/1M | 🎯 High Quality |
-| **Xiaomi: MiMo-V2-Flash** | FREE | FREE | ⚡ Fast |
-| **DeepSeek: DeepSeek V3.2** | $0.25/1M | $0.38/1M | 💰 Cheap |
-| **Google: Gemini 3 Flash Preview** | $0.50/1M | $3.00/1M | ⚡ Fast |
-| **xAI: Grok 4.1 Fast** | $0.20/1M | $0.50/1M | ⚡⚡ Very Fast |
-| **Anthropic: Claude Opus 4.5** | $5.00/1M | $25.00/1M | 🎯🎯 Best Quality |
-| **Google: Gemini 2.5 Flash Lite** | $0.10/1M | $0.40/1M | 💰 Very Cheap |
+| Model | Input Cost | Output Cost |
+|-------|-----------|-------------|
+| **xAI: Grok Code Fast** | $0.20/1M | $1.50/1M |
+| **Google: Gemini 2.5 Flash** | $0.30/1M | $2.50/1M |
+| **Anthropic: Claude Sonnet 4.5** | $3.00/1M | $15.00/1M |
+| **Xiaomi: MiMo-V2-Flash** | FREE | FREE |
+| **DeepSeek: DeepSeek V3.2** | $0.25/1M | $0.38/1M |
+| **Google: Gemini 3 Flash Preview** | $0.50/1M | $3.00/1M |
+| **xAI: Grok 4.1 Fast** | $0.20/1M | $0.50/1M |
+| **Anthropic: Claude Opus 4.5** | $5.00/1M | $25.00/1M |
+| **Google: Gemini 2.5 Flash Lite** | $0.10/1M | $0.40/1M |
 
-Choose based on your speed, cost, and quality preferences.
+Choose based on your cost and quality preferences.
 
 ## 📁 Project Structure
 
