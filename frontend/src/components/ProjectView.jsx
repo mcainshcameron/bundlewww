@@ -41,6 +41,9 @@ function ProjectView({ projectId, onBack }) {
           setCurrentPhase('content')
         } else if (data.status === 'schema_generated') {
           setCurrentPhase('render')
+        } else if (data.status === 'rendering') {
+          // Website rendering in progress - stay on render phase
+          setCurrentPhase('render')
         } else if (data.status === 'completed') {
           setCurrentPhase('preview')
         }

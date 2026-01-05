@@ -242,6 +242,10 @@ async def generate_content_stream(project_id: str):
 
     async def event_generator():
         try:
+            # Update project status to generating_content
+            project.status = "generating_content"
+            persistence.save_project(project)
+
             # Prepare output directory for images if generation is enabled
             # Use a pre-generated schema ID to keep images and schema together
             schema_id = str(uuid.uuid4())
@@ -320,6 +324,10 @@ async def generate_website_stream(project_id: str):
 
     async def event_generator():
         try:
+            # Update project status to rendering
+            project.status = "rendering"
+            persistence.save_project(project)
+
             # Determine output directory
             output_dir = persistence.ensure_website_dir(project_id, schema.id)
 
