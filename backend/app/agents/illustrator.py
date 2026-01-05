@@ -45,6 +45,13 @@ Guidelines:
 - Aim for clarity and visual impact
 - The image should be suitable for a chapter header/hero image
 
+Style Requirements:
+- Contemporary flat illustration style with a focus on bold, organic shapes
+- Use a vivid, saturated color palette (e.g., electric blue, coral, sunny yellow)
+- Composition utilizes the rule of thirds with a clean, uncluttered layout
+- Apply a very subtle grain texture to the flat colors to add warmth, avoiding gradients
+- Visuals should rely on shape language rather than line work
+
 Return ONLY the image prompt, no additional text."""
 
         user_prompt = f"""Create an image generation prompt for this chapter:
