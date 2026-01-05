@@ -1,0 +1,433 @@
+/* BundleWWW Generated Website Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f5f5f5;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* Left Sidebar Navigation */
+.site-nav {
+  width: 220px;
+  min-width: 220px;
+  background: #2c3e50;
+  padding: 1.5rem 0;
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.nav-header {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.nav-header h1 {
+  font-size: 1rem;
+  color: #ecf0f1;
+  font-weight: 600;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu a {
+  display: block;
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 0.625rem 1rem;
+  transition: background 0.2s;
+  border-left: 3px solid transparent;
+  font-size: 0.875rem;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: #3498db;
+}
+
+.nav-menu .active a {
+  background: rgba(52, 152, 219, 0.2);
+  border-left-color: #3498db;
+  font-weight: 500;
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  background: white;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.chapter-content,
+.landing-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Landing Page Styles */
+.landing-hero {
+  text-align: center;
+  padding: 4rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 3rem;
+}
+
+.landing-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.landing-subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  margin: 0;
+}
+
+.landing-chapters h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.landing-chapter {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.landing-chapter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.landing-chapter-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3498db;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.landing-chapter-content {
+  flex: 1;
+}
+
+.landing-chapter-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+}
+
+.landing-chapter-content h3 a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.landing-chapter-content h3 a:hover {
+  color: #3498db;
+}
+
+.landing-chapter-content p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9375rem;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.chapter-hero-image {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 100%;
+}
+
+.chapter-hero-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  color: #34495e;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin: 2.5rem 0 1.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0.75rem;
+  color: #34495e;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.5rem;
+  color: #555;
+}
+
+p {
+  margin: 1rem 0;
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.chapter-introduction {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #ecf0f1;
+  border-left: 4px solid #3498db;
+}
+
+.content-section {
+  margin: 3rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #ddd;
+}
+
+.prose-section {
+  margin: 1.5rem 0;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1.5rem 0;
+}
+
+.timeline-event {
+  position: relative;
+  padding: 1rem 0 1rem 1.5rem;
+  border-left: 2px solid #3498db;
+}
+
+.timeline-event::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3498db;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+
+.table-section {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background: #3498db;
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.callout {
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  border-left: 4px solid;
+}
+
+.callout-info {
+  background: #e8f4f8;
+  border-color: #3498db;
+}
+
+.callout-warning {
+  background: #fff3cd;
+  border-color: #ffc107;
+}
+
+.callout-tip {
+  background: #d4edda;
+  border-color: #28a745;
+}
+
+.key-stat {
+  text-align: center;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.stat-context {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.code-section {
+  margin: 1.5rem 0;
+}
+
+pre {
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .site-nav {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    position: relative;
+    padding: 1rem 0;
+  }
+
+  .nav-header {
+    padding: 0 1rem 1rem;
+  }
+
+  .nav-menu a {
+    padding: 0.5rem 1rem;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
+
+  .chapter-content,
+  .landing-content {
+    max-width: 100%;
+  }
+
+  .landing-hero h1 {
+    font-size: 2rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+
+  .landing-chapter {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .landing-chapter-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.375rem;
+  }
+}
