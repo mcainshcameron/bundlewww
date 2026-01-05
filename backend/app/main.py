@@ -202,6 +202,10 @@ async def generate_blueprint_stream(project_id: str):
                 yield f"data: {final_event.model_dump_json()}\n\n"
 
         except Exception as e:
+            # Reset project status on failure
+            project.status = "created"
+            persistence.save_project(project)
+
             error_event = PipelineEvent(
                 event_type=EventType.ERROR,
                 message=f"Generation failed: {str(e)}",
@@ -275,6 +279,10 @@ async def generate_content_stream(project_id: str):
                 yield f"data: {final_event.model_dump_json()}\n\n"
 
         except Exception as e:
+            # Reset project status on failure
+            project.status = "blueprint_approved"
+            persistence.save_project(project)
+
             error_event = PipelineEvent(
                 event_type=EventType.ERROR,
                 message=f"Content generation failed: {str(e)}",
@@ -328,6 +336,10 @@ async def generate_website_stream(project_id: str):
             persistence.save_project(project)
 
         except Exception as e:
+            # Reset project status on failure
+            project.status = "schema_generated"
+            persistence.save_project(project)
+
             error_event = PipelineEvent(
                 event_type=EventType.ERROR,
                 message=f"Website rendering failed: {str(e)}",
