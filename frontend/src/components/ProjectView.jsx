@@ -37,9 +37,8 @@ function ProjectView({ projectId, onBack }) {
         } else if (data.status === 'blueprint_approved') {
           setCurrentPhase('content')
         } else if (data.status === 'generating_content') {
-          // Content generation in progress
+          // Content generation in progress - stay on content phase
           setCurrentPhase('content')
-          setError('Content generation is already in progress for this project. Please wait for it to complete.')
         } else if (data.status === 'schema_generated') {
           setCurrentPhase('render')
         } else if (data.status === 'completed') {
@@ -124,6 +123,8 @@ function ProjectView({ projectId, onBack }) {
     } finally {
       abortControllerRef.current = null
       setIsGenerating(false)
+      // Always fetch project status after generation ends to sync with backend
+      await fetchProject(true)
     }
   }
 
@@ -149,17 +150,6 @@ function ProjectView({ projectId, onBack }) {
     setIsGenerating(true)
     setEvents([])
     abortControllerRef.current = new AbortController()
-
-    // Update project status to indicate generation started
-    try {
-      await fetch(`/api/projects/${projectId}/status`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'generating_content' })
-      })
-    } catch (err) {
-      console.error('Failed to update project status:', err)
-    }
 
     try {
       const response = await fetch(`/api/projects/${projectId}/generate/content`, {
@@ -195,6 +185,8 @@ function ProjectView({ projectId, onBack }) {
     } finally {
       abortControllerRef.current = null
       setIsGenerating(false)
+      // Always fetch project status after generation ends to sync with backend
+      await fetchProject(true)
     }
   }
 
@@ -237,6 +229,8 @@ function ProjectView({ projectId, onBack }) {
     } finally {
       abortControllerRef.current = null
       setIsGenerating(false)
+      // Always fetch project status after generation ends to sync with backend
+      await fetchProject(true)
     }
   }
 
