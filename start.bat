@@ -60,7 +60,7 @@ echo ============================================
 echo.
 
 REM Start both processes
-start "BundleWWW Backend" cmd /k "uv run uvicorn backend.app.main:app --reload --port 8000"
+start "BundleWWW Backend" cmd /k "uv run uvicorn backend.app.main:app --reload --reload-dir backend --port 8000"
 timeout /t 2 /nobreak >nul
 start "BundleWWW Frontend" cmd /k "cd frontend && npm run dev"
 

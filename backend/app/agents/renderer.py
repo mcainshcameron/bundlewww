@@ -3,7 +3,7 @@ Agent C: Renderer
 Deterministically renders static website from schema
 """
 from pathlib import Path
-from typing import AsyncGenerator
+from typing import AsyncGenerator, Optional
 import shutil
 
 from ..models import Blueprint, Project
@@ -126,6 +126,7 @@ class RendererAgent:
         self,
         project: Project,
         blueprint: Blueprint,
+        landing_page_image_path: Optional[str] = None,
     ) -> str:
         """Render the landing/home page"""
 
@@ -145,6 +146,14 @@ class RendererAgent:
         # Build navigation
         nav_html = self._build_navigation(blueprint, "home", project)
 
+        # Add hero image if available
+        hero_image_html = ""
+        if landing_page_image_path:
+            hero_image_html = f"""
+    <div class="landing-hero-image">
+      <img src="{landing_page_image_path}" alt="{project.topic}" />
+    </div>"""
+
         # Complete landing page
         return f"""<!DOCTYPE html>
 <html lang="en">
@@ -160,7 +169,7 @@ class RendererAgent:
     <div class="landing-hero">
       <h1>{project.topic}</h1>
       <p class="landing-subtitle">A comprehensive guide exploring this topic in depth</p>
-    </div>
+    </div>{hero_image_html}
 
     <div class="landing-chapters">
       <h2>Chapters</h2>
@@ -366,6 +375,22 @@ main {
   font-size: 1.25rem;
   color: #666;
   margin: 0;
+}
+
+.landing-hero-image {
+  margin: 3rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 100%;
+}
+
+.landing-hero-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .landing-chapters h2 {
@@ -719,7 +744,9 @@ code {
                 f.write(self._generate_stylesheet())
 
             # Render landing page as index.html
-            landing_html = self._render_landing_page(project, blueprint)
+            landing_html = self._render_landing_page(
+                project, blueprint, schema.landing_page_image_path
+            )
             landing_path = output_dir / "index.html"
             with open(landing_path, "w", encoding="utf-8") as f:
                 f.write(landing_html)

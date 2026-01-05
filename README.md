@@ -2,7 +2,7 @@
 
 > Generate complete, AI-powered static websites about any topic in minutes
 
-**[🌐 View Live Demo →](https://mcainshcameron.github.io/bundlewww/)**
+**[🌐 Demo Output →](https://mcainshcameron.github.io/bundlewww/)**
 
 ![BundleWWW Architecture](BundleWWW%20Image.jpg)
 

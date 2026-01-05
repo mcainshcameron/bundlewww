@@ -78,3 +78,4 @@ class WebsiteSchema(BaseModel):
     project_id: str = Field(description="Associated project ID")
     blueprint_id: str = Field(description="Associated blueprint ID")
     chapters: List[ChapterSchema] = Field(description="Complete chapter schemas")
+    landing_page_image_path: Optional[str] = Field(default=None, description="Relative path to landing page hero image")

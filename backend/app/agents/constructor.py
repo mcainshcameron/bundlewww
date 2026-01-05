@@ -290,12 +290,37 @@ Generate the complete chapter content now. Return ONLY the JSON."""
 
                 chapter_schemas.append(chapter_schema)
 
+        # Generate landing page image if enabled
+        landing_page_image_path = None
+        if (
+            project.config.generate_images
+            and illustrator_agent
+            and output_dir
+        ):
+            try:
+                yield PipelineEvent(
+                    event_type=EventType.PROGRESS,
+                    message="Generating landing page hero image",
+                )
+                landing_page_image_path = await illustrator_agent.generate_landing_page_image(
+                    project, output_dir
+                )
+                if landing_page_image_path:
+                    yield PipelineEvent(
+                        event_type=EventType.PROGRESS,
+                        message="Landing page image generated",
+                    )
+            except Exception as e:
+                print(f"Landing page image generation failed: {str(e)}")
+                # Continue without image
+
         # Create final schema
         schema = WebsiteSchema(
             id=str(uuid.uuid4()),
             project_id=project.id,
             blueprint_id=blueprint.id,
             chapters=chapter_schemas,
+            landing_page_image_path=landing_page_image_path,
         )
 
         yield schema
