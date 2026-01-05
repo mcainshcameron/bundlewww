@@ -4,9 +4,10 @@
 
 **[🌐 Demo Output →](https://mcainshcameron.github.io/bundlewww/)**
 
+BundleWWW is a powerful web application that uses AI to create fully functional, self-contained static websites on any topic you choose. From initial structure to final content, everything is generated automatically.
+
 ![BundleWWW Architecture](BundleWWW%20Image.jpg)
 
-BundleWWW is a powerful web application that uses AI to create fully functional, self-contained static websites on any topic you choose. From initial structure to final content, everything is generated automatically.
 
 ## ✨ Features
 
