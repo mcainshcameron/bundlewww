@@ -2,6 +2,7 @@
 Agent D: Illustrator
 Generates images for chapters using AI image generation
 """
+import asyncio
 import aiohttp
 from pathlib import Path
 from typing import Optional, Dict, Any
@@ -107,6 +108,7 @@ Generate a detailed visual prompt (2-3 sentences) that captures the essence of t
             print(f"Generated image prompt for chapter {chapter_number}: {image_prompt}")
 
             # Generate the image
+            print(f"Requesting image from FAL API for chapter {chapter_number}...")
             result = await self.fal_service.generate_image(
                 prompt=image_prompt,
                 aspect_ratio="16:9",
@@ -114,27 +116,37 @@ Generate a detailed visual prompt (2-3 sentences) that captures the essence of t
             )
 
             if not result or not result.get("images"):
+                print(f"No image result from FAL API for chapter {chapter_number}")
                 return None
 
             # Download and save the image
             image_data = result["images"][0]
             image_url = image_data["url"]
+            print(f"Downloading image for chapter {chapter_number} from {image_url[:50]}...")
+
             file_extension = image_data.get("content_type", "image/png").split("/")[1]
             filename = f"chapter_{chapter_number}_hero.{file_extension}"
             image_path = output_dir / filename
 
-            # Download the image
+            # Download the image with timeout
             async with aiohttp.ClientSession() as session:
-                async with session.get(image_url) as response:
+                async with session.get(
+                    image_url,
+                    timeout=aiohttp.ClientTimeout(total=60)
+                ) as response:
                     if response.status == 200:
                         content = await response.read()
                         with open(image_path, "wb") as f:
                             f.write(content)
+                        print(f"Successfully saved image for chapter {chapter_number}")
                         return filename
                     else:
                         print(f"Failed to download image: HTTP {response.status}")
                         return None
 
+        except asyncio.TimeoutError:
+            print(f"Timeout while generating/downloading image for chapter {chapter_number}")
+            return None
         except Exception as e:
             print(f"Image generation failed for chapter {chapter_number}: {str(e)}")
             return None
